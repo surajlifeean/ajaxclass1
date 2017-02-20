@@ -1,0 +1,39 @@
+<html>
+<script type="text/javascript">
+function showUser(str){
+	if(str==""){
+		document.getElementById("txtHint").innerHTML="";
+		return;
+	}
+	    else{
+		if(window.XMLHttpRequest){
+			xmlhttp = new XMLHttpRequest();
+		}
+		else{
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if(this.readyState==4 && this.status==200){
+				document.getElementById("txtHint").innerHTML=this.responseText;
+			}
+		};
+		xmlhttp.open("GET","getuser.php?q="+str,true);
+		xmlhttp.send();
+	}
+}
+
+</script>
+</head>
+<body>
+<form>
+ <select name="users" onchange="showUser(this.value)">
+ <option value="">Select a persion:</option>option>
+ <option value="8">user 1</option>
+ <option value="7">user 2</option>
+ <option value="9">user 3</option>
+ </select>
+</form>
+<br>
+<div id="txtHint"><b> Info of user</b> </div>
+</body>
+</html>
