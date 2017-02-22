@@ -31,21 +31,20 @@ catch(PDOException $e)
     {
     $e->getMessage();
     }
-    $sql = "SELECT * FROM password where phn_no like '".$q."%'";
+    $sql = "SELECT * FROM password where phn_no like'".$phn_no."%'";
 $result = $conn->query($sql);
 echo "<table>
 <tr>
 <th>PHONE NO.</th>
 <th>PASSWORD</th>
 </tr>";
-    while($row = $result->fetch_assoc()) {
+    while($row = $result-> fetch()) {
             echo "<tr>";
     echo "<td>" . $row['phn_no'] . "</td>";
     echo "<td>" . $row['password'] . "</td>";
     echo "</tr>";
     }
     echo "</table>";
-$conn->close();
 ?>
 </body>
 </html>
